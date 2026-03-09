@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #0d1a0d;
+  color: #e2e8f0;
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
+}
+
+/* Subtle grid lines */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0px, transparent 79px, rgba(255,255,255,0.015) 79px, rgba(255,255,255,0.015) 80px),
+    repeating-linear-gradient(0deg,  transparent 0px, transparent 79px, rgba(255,255,255,0.015) 79px, rgba(255,255,255,0.015) 80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 10% 0%,   rgba(16,185,129,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 90% 100%,  rgba(16,185,129,0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Every page content sits above the decorative layers */
+nav, main, footer { position: relative; z-index: 1; }
+
+/* Reusable input style */
+.field {
+  display: block;
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 13px 16px;
+  color: #e2e8f0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.field:focus {
+  border-color: #10b981;
+  background: rgba(16,185,129,0.07);
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.12);
+}
+.field::placeholder { color: rgba(255,255,255,0.25); }
+.field option { background: #1a2e1a; color: #e2e8f0; }
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.04) 0%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.04) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* Card glass effect */
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+}
+
+/* Gradient heading */
+.grad {
+  background: linear-gradient(135deg, #10b981 0%, #6ee7b7 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Pulse dot */
+.dot-live {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: liveDot 2.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes liveDot {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.3; transform:scale(0.6); }
+}
+
+/* Modal animation */
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+.modal-in { animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(16,185,129,0.3); border-radius: 4px; }
