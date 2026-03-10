@@ -49,7 +49,7 @@ Open http://localhost:3000
 |-----|--------|-------------|
 | `/` | Public | Register players |
 | `/admin/login` | Public | Admin login |
-| `/admin` | Admin only | Dashboard, players, teams |
+| `/admin` | Admin only | Dashboard, players, teams
 
 ## Admin credentials
 - Username: `rsb@sullia`  
